@@ -10,10 +10,14 @@ def calculate_bmi(weight, height_cm):
   """
 
   if height_cm <= 0:
-    raise ValueError("Height cannot be zero or negative.")
+    raise ValueError("Height cannot be zero or negative.")  # Both versions have this line
 
   height_m = height_cm / 100  # Convert height to meters
-  bmi = weight / (height_m * height_m)
+  bmi = weight / (height_m * height_m)  # Both versions have this line
+
+  # **Intentional Modification (version A):**
+  bmi_category = interpret_bmi(bmi)  # Uncomment to create conflict with version B
+
   return bmi
 
 def interpret_bmi(bmi):
@@ -34,6 +38,9 @@ def interpret_bmi(bmi):
     return "Overweight (Increased risk of health problems. Consider weight management.)"
   else:
     return "Obese (Serious health risks. Consult a doctor to develop a safe weight loss plan.)"
+
+  # **Intentional Modification (version B):**
+  # print(f"Your BMI category is: {bmi_category}")  # Uncomment to create conflict with version A
 
 def main():
   """Prompts the user for weight and height, calculates BMI, and interprets the result."""
